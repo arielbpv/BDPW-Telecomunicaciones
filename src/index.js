@@ -15,7 +15,7 @@ app.engine('.hbs', engine({
     layoutDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'),'partials'),
     extname: '.hbs',
-    helpers: require('./lib/Handlebars') 
+    helpers: require('./app/lib/Handlebars') 
 }));
 app.set('view engine', '.hbs'); 
 
@@ -31,9 +31,9 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use(require('./routes'));
-app.use(require('./routes/authentication'));
-app.use('/plans', require('./routes/planes'));
+app.use(require('./app/routes'));
+app.use(require('./app/routes/authentication'));
+app.use('/plans', require('./app/routes/planes'));
 
 
 //public
