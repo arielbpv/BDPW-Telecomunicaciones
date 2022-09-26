@@ -9,7 +9,7 @@ const app = express();
 
 //settings
 app.set('port', process.env.PORT || 4000);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app/views'));
 app.engine('.hbs', engine({
     defaultlayout: 'main',
     layoutDir: path.join(app.get('views'), 'layouts'),

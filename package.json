@@ -30,5 +30,13 @@
     "@types/express": "^4.17.14",
     "@types/morgan": "^1.9.3",
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielbpv/BDPW-Telecomunicaciones.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arielbpv/BDPW-Telecomunicaciones/issues"
+  },
+  "homepage": "https://github.com/arielbpv/BDPW-Telecomunicaciones#readme"
 }

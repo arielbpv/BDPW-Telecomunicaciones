@@ -22,6 +22,7 @@ pool.getConnection((err, connection) => {
     console.log('DB is Connected');
     return;
 });
+
 // promisify pool -> query
 pool.query = promisify(pool.query);
 
