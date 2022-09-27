@@ -14,15 +14,14 @@ router.post('/add', async (req, res) =>{
         Descripcion,
         Nombre
     };
-    
     await pool.query('INSERT INTO plan set ?', [newPlan]);
-    res.send('recivido');
+    res.send('recived');
 });
 
-router.get('/', async (req, res) => { 
-    const plan= await pool.query('SELECT * FROM plan');
-    console.log(plan);
-    res.send('planes aca')
-});
+//router.get('/', async (req, res) => { 
+//    const plan= await pool.query('SELECT * FROM plan');
+//    console.log(plan);
+//    res.send('planes aca')
+//});
 
 module.exports = router;
