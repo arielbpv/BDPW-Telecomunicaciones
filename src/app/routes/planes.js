@@ -1,3 +1,4 @@
+const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
 
@@ -14,14 +15,39 @@ router.post('/add', async (req, res) =>{
         Descripcion,
         Nombre
     };
+    console.log(newPlan);
     await pool.query('INSERT INTO plan set ?', [newPlan]);
-    res.send('recived');
+    res.redirect('/plans');
 });
 
-//router.get('/', async (req, res) => { 
-//    const plan= await pool.query('SELECT * FROM plan');
-//    console.log(plan);
-//    res.send('planes aca')
-//});
+router.get('/', async (req, res) => { 
+    const plan = await pool.query('SELECT * FROM plan');
+    res.render('plans/list', {plan});
+});
+
+router.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    await pool.query('DELETE FROM plan WHERE IDPlan = ?', [id]);
+    res.redirect('/plans');
+});
+
+router.get('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    const plan = await pool.query('SELECT * FROM plan WHERE IDPlan = ?', [id]);
+    res.render('plans/edit', {plan: plan[0]});
+});
+
+router.post('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    const { Nombre, Precio, Descripcion } = req.body;
+    
+    const newPlan = {
+        Precio,
+        Descripcion,
+        Nombre
+    };
+    await pool.query('UPDATE plan set ? WHERE IDPlan = ?', [newPlan, id]);
+    res.redirect('/plans');
+}); 
 
 module.exports = router;

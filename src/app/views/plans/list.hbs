@@ -1,0 +1,22 @@
+<div class="container p-4">
+    <div class="row">
+
+        {{#each plan}}
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <a href="">
+                            <h3 class="card-title text-uppercases">
+                                {{Nombre}}
+                            </h3>
+                        </a>
+                        <p class="m-2">{{Descripcion}}</p>
+                        <p>{{Precio}}</p>
+                        <a href="/plans/delete/{{IDPlan}}" class="btn btn-danger">Eliminar plan</a>
+                        <a href="/plans/edit/{{IDPlan}}" class="btn btn-secondary">Editar</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
