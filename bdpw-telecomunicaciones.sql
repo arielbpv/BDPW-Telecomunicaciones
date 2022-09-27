@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2022 a las 01:23:43
+-- Tiempo de generación: 27-09-2022 a las 05:19:07
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -55,6 +55,13 @@ CREATE TABLE `cliente` (
   `Contraseña` varchar(500) NOT NULL COMMENT 'Contraseña de ingreso del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tabla clientes';
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`RUTCl`, `Contraseña`) VALUES
+('12096135-K', 'paralelepipedo123456');
+
 -- --------------------------------------------------------
 
 --
@@ -77,10 +84,19 @@ CREATE TABLE `factura` (
 
 CREATE TABLE `plan` (
   `IDPlan` tinyint(1) NOT NULL COMMENT 'ID asociado al plan',
-  `Precio` smallint(5) NOT NULL COMMENT 'Precio del plan',
+  `Precio` varchar(20) NOT NULL COMMENT 'Precio del plan',
   `Descripcion` varchar(280) DEFAULT NULL COMMENT 'Descripcion del contenido del plan',
-  `Nombre` varchar(12) NOT NULL COMMENT 'Nombre del Plan'
+  `Nombre` varchar(280) NOT NULL COMMENT 'Nombre del Plan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tabla planes';
+
+--
+-- Volcado de datos para la tabla `plan`
+--
+
+INSERT INTO `plan` (`IDPlan`, `Precio`, `Descripcion`, `Nombre`) VALUES
+(1, '9.990', 'Habla sin preocupaciones a todos tus destinos', 'telefonia ilimitada'),
+(10, '25.990', '1 d-BOX para tu Televisión, Todo HBO Premium incluido, Revive tus capítulos Replay TV, ', 'WAAN tv plus'),
+(11, '27.990', '91 canales SD y 78 canales HD, 1 d-BOX para tu Televisión, Replay TV para revivir tus programas favoritos, Todo HBO Premium incluido, Acceso a la app HBO Max, Velocidades máximas de hasta 500 Mbps de bajada y de hasta 10 Mbps de subida, Nextgen WiFi: tecnología que optimiza y ase', 'doble pack');
 
 -- --------------------------------------------------------
 
@@ -153,7 +169,7 @@ ALTER TABLE `factura`
 -- AUTO_INCREMENT de la tabla `plan`
 --
 ALTER TABLE `plan`
-  MODIFY `IDPlan` tinyint(1) NOT NULL AUTO_INCREMENT COMMENT 'ID asociado al plan';
+  MODIFY `IDPlan` tinyint(1) NOT NULL AUTO_INCREMENT COMMENT 'ID asociado al plan', AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
