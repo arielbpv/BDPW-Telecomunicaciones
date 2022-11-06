@@ -17,6 +17,7 @@ router.post('/add', async (req, res) =>{
     };
     console.log(newPlan);
     await pool.query('INSERT INTO plan set ?', [newPlan]);
+    req.flash('success', 'Plan creado correctamente');
     res.redirect('/plans');
 });
 
@@ -28,6 +29,7 @@ router.get('/', async (req, res) => {
 router.get('/delete/:id', async (req, res) => {
     const { id } = req.params;
     await pool.query('DELETE FROM plan WHERE IDPlan = ?', [id]);
+    req.flash('success', 'Plan Removed successfully');
     res.redirect('/plans');
 });
 
@@ -47,6 +49,7 @@ router.post('/edit/:id', async (req, res) => {
         Nombre
     };
     await pool.query('UPDATE plan set ? WHERE IDPlan = ?', [newPlan, id]);
+    req.flash('success', 'Plan Updated successfully');
     res.redirect('/plans');
 }); 
 
